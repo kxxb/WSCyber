@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="CyberWS">
+      <implementation-class>cyber.ws.CyberWS</implementation-class>
+      <wsdl-url>file:/C:/Documents%20and%20Settings/peter.s/Мои%20документы/NetBeansProjects/03.06/CyberWS/src/java/CyberWS.wsdl</wsdl-url>
+      <local-wsdl-file>CyberWS.wsdl</local-wsdl-file>
+      <service-name>CyberWSService</service-name>
+      <port-name>CyberWSPort</port-name>
+      <package-name>com.cyber.sms.cyberws</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+    </service>
+  </services>
+  <clients>
+    <client name="CyberWSService">
+      <wsdl-url>http://192.168.5.41:8280/CyberWS/CyberWSService?WSDL</wsdl-url>
+      <local-wsdl-file>192.168.5.41_8280/CyberWS/CyberWSService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">cyber.client</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+    </client>
+  </clients>
+  <jsr109>true</jsr109>
+</jax-ws>

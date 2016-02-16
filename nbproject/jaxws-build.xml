@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        -->
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-CyberWSService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CyberWSService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CyberWSService" destdir="${build.generated.dir}/jax-wsCache/CyberWSService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CyberWSService/wsdl/192.168.5.41_8280/CyberWS/CyberWSService.wsdl" catalog="catalog.xml"/>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CyberWSService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CyberWSService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/cyber/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/CyberWSService"/>
+    </target>
+    <target name="wsimport-service-CyberWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/CyberWS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/CyberWS" destdir="${build.generated.dir}/jax-wsCache/service/CyberWS" wsdl="${basedir}/${conf-dir}xml-resources/web-services/CyberWS/wsdl/CyberWS.wsdl" catalog="catalog.xml"/>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/CyberWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/CyberWS">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/CyberWS/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-CyberWS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/cyber/sms/cyberws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/CyberWS"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-CyberWSService"/>
+    <target name="wsimport-service-generate" depends="wsimport-service-CyberWS"/>
+</project>

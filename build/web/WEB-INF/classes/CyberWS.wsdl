@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CyberWS" targetNamespace="http://sms.cyber.com/CyberWS"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sms.cyber.com/CyberWS" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types/>
+    <message name="StartCyber">
+        <part name="go" type="xsd:string"/>
+    </message>
+    <message name="StopCyberReq">
+        <part name="stopin" type="xsd:string"/>
+    </message>
+    <message name="StopCyberRep">
+        <part name="stopout" type="xsd:int"/>
+    </message>
+    <portType name="CyberWSPortType">
+        <operation name="CyberStart">
+            <input name="startCyber" message="tns:StartCyber"/>
+        </operation>
+        <operation name="CyberStop">
+            <input name="stopCybeIN" message="tns:StopCyberReq"/>
+            <output name="stopCyberOUT" message="tns:StopCyberRep"/>
+        </operation>
+    </portType>
+    <binding name="CyberWSBinding" type="tns:CyberWSPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="CyberStart">
+            <soap:operation style="rpc"/>
+            <input name="startCyber">
+                <soap:body use="literal" namespace="http://sms.cyber.com/CyberWS" parts="go"/>
+            </input>
+        </operation>
+        <operation name="CyberStop">
+            <input name="stopCybeIN">
+                <soap:body parts="stopin" use="literal" namespace="http://sms.cyber.com/CyberWS"/>
+            </input>
+            <output name="stopCyberOUT">
+                <soap:body parts="stopout" use="literal" namespace="http://sms.cyber.com/CyberWS"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CyberWSService">
+        <port name="CyberWSPort" binding="tns:CyberWSBinding">
+            <soap:address location="http://192.168.5.41:8280/CyberWSService/CyberWSPort"/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="CyberWS1">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="CyberWSPortTypeRole" portType="tns:CyberWSPortType"/>
+    </plnk:partnerLinkType>
+</definitions>

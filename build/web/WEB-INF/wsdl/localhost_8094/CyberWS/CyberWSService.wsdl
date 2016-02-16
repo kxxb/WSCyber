@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.2-b05-RC1. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sms.cyber.com/CyberWS" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CyberWS" targetNamespace="http://sms.cyber.com/CyberWS">
+    <types></types>
+    <message name="StartCyber">
+        <part name="go" type="xsd:string"></part>
+    </message>
+    <message name="StopCyberReq">
+        <part name="stopin" type="xsd:string"></part>
+    </message>
+    <message name="StopCyberRep">
+        <part name="stopout" type="xsd:int"></part>
+    </message>
+    <portType name="CyberWSPortType">
+        <operation name="CyberStart">
+            <input name="startCyber" message="tns:StartCyber"></input>
+        </operation>
+        <operation name="CyberStop">
+            <input name="stopCybeIN" message="tns:StopCyberReq"></input>
+            <output name="stopCyberOUT" message="tns:StopCyberRep"></output>
+        </operation>
+    </portType>
+    <binding name="CyberWSBinding" type="tns:CyberWSPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <operation name="CyberStart">
+            <soap:operation style="rpc"></soap:operation>
+            <input name="startCyber">
+                <soap:body use="literal" namespace="http://sms.cyber.com/CyberWS" parts="go"></soap:body>
+            </input>
+        </operation>
+        <operation name="CyberStop">
+            <input name="stopCybeIN">
+                <soap:body parts="stopin" use="literal" namespace="http://sms.cyber.com/CyberWS"></soap:body>
+            </input>
+            <output name="stopCyberOUT">
+                <soap:body parts="stopout" use="literal" namespace="http://sms.cyber.com/CyberWS"></soap:body>
+            </output>
+        </operation>
+    </binding>
+    <service name="CyberWSService">
+        <port name="CyberWSPort" binding="tns:CyberWSBinding">
+            <soap:address location="http://localhost:8094/CyberWS/CyberWSService"></soap:address>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="CyberWS1">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="CyberWSPortTypeRole" portType="tns:CyberWSPortType"></plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

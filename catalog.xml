@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8084/CyberWS/CyberWSService?WSDL" uri="src/conf/xml-resources/web-service-references/CyberWSService/wsdl/localhost_8084/CyberWS/CyberWSService.wsdl"/>
+    <system systemId="http://localhost:8094/CyberWS/CyberWSService?WSDL" uri="src/conf/xml-resources/web-service-references/CyberWSService/wsdl/localhost_8094/CyberWS/CyberWSService.wsdl"/>
+    <system systemId="http://192.168.5.41:8280/CyberWS/CyberWSService?WSDL" uri="src/conf/xml-resources/web-service-references/CyberWSService/wsdl/192.168.5.41_8280/CyberWS/CyberWSService.wsdl"/>
+    <system systemId="file:/C:/Documents%20and%20Settings/peter.s/Мои%20документы/NetBeansProjects/03.06/CyberWS/src/java/CyberWS.wsdl" uri="src/conf/xml-resources/web-services/CyberWS/wsdl/CyberWS.wsdl"/>
+</catalog>
